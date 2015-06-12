@@ -61,6 +61,42 @@ module.exports = function (grunt) {
 
 
 
+		search: {
+			options: {
+				logFormat: "custom",
+				customLogFormatCallback: function(params) {
+					/*
+					// here, params is an object containing the following
+					{
+						filePaths: [], // an array of file paths
+						results: [], // the results
+						numResults: X // the number of results
+					}
+					*/
+				}
+			},
+			cssClasses: {
+				files: {
+					src: ["src/less/**/*.less"]
+				},
+				options: {
+					searchString: /\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*\s*[\,\{]/g,
+					logFile: "tmp/css-classes-results.json"
+				}
+			},
+			lessMixins: {
+				files: {
+					src: ["src/less/**/*.less"]
+				},
+				options: {
+					searchString: /\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*\s*[\(]/g,
+					logFile: "tmp/less-mixins-results.json"
+				}
+			}
+		},
+
+
+
 		watch: {
 			grunt: {
 				files: "<%= jshint.grunt.src %>",
