@@ -6,12 +6,13 @@
  */
 
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
+	'use strict';
 
-	//Load tasks
+	// Load tasks
 	require('load-grunt-tasks')(grunt);
 
-	//Show time
+	// Show time
 	require('time-grunt')(grunt);
 
 	// Project configuration.
@@ -22,12 +23,9 @@ module.exports = function(grunt) {
 
 		jshint: {
 			options: {
-				jshintrc: 'js/.jshintrc'
+				jshintrc: '.jshintrc'
 			},
 			grunt: {
-				options: {
-					jshintrc: 'grunt/.jshintrc'
-				},
 				src: ['Gruntfile.js', 'grunt/*.js']
 			}
 		},
@@ -37,20 +35,20 @@ module.exports = function(grunt) {
 		jscs: {
 			grunt: {
 				src: '<%= jshint.grunt.src %>'
-			},
-		}
+			}
+		},
 
 
 
 		watch: {
 			grunt: {
 				files: '<%= jshint.grunt.src %>',
-				tasks: ['jshint:grunt']
-			},
-		},
+				tasks: ['jshint:grunt', 'jscs:grunt']
+			}
+		}
 
 	});
 
 	// Default task(s).
-	grunt.registerTask('default', ['']);
+	grunt.registerTask('default', ['watch']);
 };
