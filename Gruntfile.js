@@ -3,30 +3,32 @@
  * - Get Bootstrap version
  * - Find all classes in Bootstrap
  * - Define all Bootstrap classes in a JSON and define their Suitstrap equivalent
+ *
+ * - Copy config-files
  */
 
 
 module.exports = function (grunt) {
-	'use strict';
+	"use strict";
 
 	// Load tasks
-	require('load-grunt-tasks')(grunt);
+	require("load-grunt-tasks")(grunt);
 
 	// Show time
-	require('time-grunt')(grunt);
+	require("time-grunt")(grunt);
 
 	// Project configuration.
 	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
+		pkg: grunt.file.readJSON("package.json"),
 
 
 
 		jshint: {
 			options: {
-				jshintrc: '.jshintrc'
+				jshintrc: ".jshintrc"
 			},
 			grunt: {
-				src: ['Gruntfile.js', 'grunt/*.js']
+				src: ["Gruntfile.js", "grunt/*.js"]
 			}
 		},
 
@@ -34,7 +36,26 @@ module.exports = function (grunt) {
 
 		jscs: {
 			grunt: {
-				src: '<%= jshint.grunt.src %>'
+				src: "<%= jshint.grunt.src %>"
+			}
+		},
+
+
+
+		clean: {
+			bootstrap: ["src"] // ,
+			// suitstrap: ["dist"]
+		},
+
+
+
+		gitclone: {
+			clone: {
+				options: {
+					repository: "https://github.com/twbs/bootstrap",
+					branch: "master",
+					directory: "src"
+				}
 			}
 		},
 
@@ -42,13 +63,18 @@ module.exports = function (grunt) {
 
 		watch: {
 			grunt: {
-				files: '<%= jshint.grunt.src %>',
-				tasks: ['jshint:grunt', 'jscs:grunt']
+				files: "<%= jshint.grunt.src %>",
+				tasks: ["jshint:grunt", "jscs:grunt"]
 			}
 		}
 
 	});
 
 	// Default task(s).
-	grunt.registerTask('default', ['watch']);
+	grunt.registerTask("default", ["watch"]);
+
+	grunt.registerTask("build", [
+		"clean",
+		"gitclone"
+	]);
 };

@@ -38,5 +38,5 @@
 	"validateIndentation": "\t",
 	"validateLineBreaks": "LF",
 	"validateNewlineAfterArrayElements": true,
-	"validateQuoteMarks": "'"
+	"validateQuoteMarks": "\""
 }
