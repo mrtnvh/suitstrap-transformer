@@ -1,0 +1,30 @@
+{
+  "name": "suitstrap-transformer",
+  "version": "0.1.0",
+  "description": "A tool to get the latest bootstrap version and transform it in to Suitstrap",
+  "main": "-",
+  "scripts": {
+    "test": "-"
+  },
+  "repository": {
+    "type": "git",
+    "url": "-"
+  },
+  "keywords": [
+    "bootstrap",
+    "suitstrap",
+    "SUIT",
+    "CSS"
+  ],
+  "author": "@vanhoofmaarten",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-git": "^0.3.5",
+    "grunt-jscs": "^1.8.0",
+    "load-grunt-tasks": "^3.2.0",
+    "time-grunt": "^1.2.1"
+  }
+}
